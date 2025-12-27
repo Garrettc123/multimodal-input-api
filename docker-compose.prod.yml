@@ -1,0 +1,43 @@
+version: '3.8'
+
+# Production Docker Compose configuration
+# Note: The 'deploy' section is primarily for Docker Swarm mode but also 
+# provides resource limits in Docker Compose v3+ with --compatibility flag
+# For standard docker-compose, use: docker-compose --compatibility up
+
+services:
+  api:
+    build: .
+    container_name: multimodal-api-prod
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - LOG_LEVEL=INFO
+      - PORT=8000
+    volumes:
+      - ./data:/app/data
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  default:
+    name: multimodal-network
