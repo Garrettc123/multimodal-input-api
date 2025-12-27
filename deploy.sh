@@ -73,17 +73,18 @@ case $choice in
     
     2)
         print_info "Deploying with Docker Compose..."
-        if ! command_exists docker-compose && ! docker compose version >/dev/null 2>&1; then
+        # Check for docker compose (new) or docker-compose (legacy)
+        if docker compose version >/dev/null 2>&1; then
+            COMPOSE_CMD="docker compose"
+        elif command_exists docker-compose; then
+            COMPOSE_CMD="docker-compose"
+        else
             print_error "Docker Compose is not installed. Please install Docker Compose first."
             exit 1
         fi
         
         print_info "Starting services..."
-        if command_exists docker-compose; then
-            docker-compose up -d
-        else
-            docker compose up -d
-        fi
+        $COMPOSE_CMD up -d
         print_success "Services started successfully"
         
         echo ""
@@ -92,8 +93,8 @@ case $choice in
         echo "API docs at: http://localhost:8000/docs"
         echo ""
         echo "Useful commands:"
-        echo "  View logs: docker-compose logs -f"
-        echo "  Stop: docker-compose down"
+        echo "  View logs: $COMPOSE_CMD logs -f"
+        echo "  Stop: $COMPOSE_CMD down"
         ;;
     
     3)
@@ -106,13 +107,13 @@ case $choice in
         
         read -p "Enter app name (or press Enter to generate): " app_name
         
-        # Check if already logged in, otherwise prompt for login
-        if ! heroku auth:whoami &>/dev/null; then
+        # Check if already logged in using a more reliable method
+        if ! heroku whoami &>/dev/null; then
             print_info "You need to log in to Heroku..."
             read -p "Press Enter to open Heroku login in your browser..."
             heroku login
         else
-            print_success "Already logged in to Heroku"
+            print_success "Already logged in to Heroku as $(heroku whoami)"
         fi
         
         if [ -z "$app_name" ]; then
