@@ -106,8 +106,14 @@ case $choice in
         
         read -p "Enter app name (or press Enter to generate): " app_name
         
-        print_info "Logging in to Heroku..."
-        heroku login
+        # Check if already logged in, otherwise prompt for login
+        if ! heroku auth:whoami &>/dev/null; then
+            print_info "You need to log in to Heroku..."
+            read -p "Press Enter to open Heroku login in your browser..."
+            heroku login
+        else
+            print_success "Already logged in to Heroku"
+        fi
         
         if [ -z "$app_name" ]; then
             print_info "Creating new Heroku app..."
@@ -132,8 +138,13 @@ case $choice in
             exit 1
         fi
         
-        print_info "Logging in to Railway..."
-        railway login
+        # Check if already logged in
+        if ! railway whoami &>/dev/null; then
+            print_info "You need to log in to Railway..."
+            railway login
+        else
+            print_success "Already logged in to Railway"
+        fi
         
         print_info "Initializing Railway project..."
         railway init
@@ -153,8 +164,13 @@ case $choice in
             exit 1
         fi
         
-        print_info "Logging in to Fly.io..."
-        flyctl auth login
+        # Check if already logged in
+        if ! flyctl auth whoami &>/dev/null; then
+            print_info "You need to log in to Fly.io..."
+            flyctl auth login
+        else
+            print_success "Already logged in to Fly.io"
+        fi
         
         if [ ! -f "fly.toml" ]; then
             print_info "Launching new Fly.io app..."
