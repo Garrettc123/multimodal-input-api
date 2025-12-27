@@ -27,6 +27,8 @@ primary_region = "sjc"
   path = "/health"
 
 [[vm]]
+  # Note: [[vm]] creates an array for multiple VM configurations
+  # Fly.io uses this syntax for its configuration
   cpu_kind = "shared"
   cpus = 1
   memory_mb = 512

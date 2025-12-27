@@ -420,14 +420,13 @@ See `.github/workflows/` for configuration details.
 
 ### Free Tiers Available
 
-- **Heroku**: Free dyno (sleeps after 30 min inactivity)
 - **Railway**: $5 credit per month
-- **Render**: Free tier with limitations
+- **Render**: Free tier with limitations (services spin down after inactivity)
 - **Fly.io**: Free allowance (3 VMs with 256MB RAM)
 
 ### Paid Plans Start At
 
-- **Heroku**: $7/month (Eco dyno)
+- **Heroku**: $5/month (Eco dyno - sleeps after 30 min inactivity), $7/month (Basic dyno - no sleeping)
 - **Railway**: $5/month per service
 - **Render**: $7/month (Starter)
 - **Fly.io**: Pay-as-you-go

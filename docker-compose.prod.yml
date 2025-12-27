@@ -1,5 +1,10 @@
 version: '3.8'
 
+# Production Docker Compose configuration
+# Note: The 'deploy' section is primarily for Docker Swarm mode but also 
+# provides resource limits in Docker Compose v3+ with --compatibility flag
+# For standard docker-compose, use: docker-compose --compatibility up
+
 services:
   api:
     build: .
