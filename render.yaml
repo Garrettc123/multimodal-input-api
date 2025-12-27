@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: multimodal-input-api
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: PORT
+        value: 8000
+    autoDeploy: true

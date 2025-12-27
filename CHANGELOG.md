@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2025-12-27
+
+### Added - Deployment Features
+- Comprehensive deployment documentation (DEPLOYMENT.md)
+- Deployment workflow for GitHub Container Registry
+- Platform-specific configuration files:
+  - Heroku deployment (`Procfile`, `app.json`)
+  - Railway deployment (`railway.json`)
+  - Render deployment (`render.yaml`)
+  - Fly.io deployment (`fly.toml`)
+- Interactive deployment script (`deploy.sh`)
+- Production Docker Compose configuration
+- .dockerignore for optimized Docker builds
+- Automatic Docker image publishing to GHCR
+- Multi-platform Docker builds (amd64, arm64)
+- PORT environment variable support in Dockerfile
+
+### Changed
+- Enhanced CI/CD pipeline with container registry publishing
+- Updated README with deployment quickstart
+- Improved Docker configuration for production use
+
+### Deployment Options
+- ✅ Docker & Docker Compose
+- ✅ GitHub Container Registry (automated)
+- ✅ Heroku (one-click deploy button)
+- ✅ Railway (automatic detection)
+- ✅ Render (blueprint configuration)
+- ✅ Fly.io (toml configuration)
+- ✅ Manual VPS deployment
+
 ## [1.0.0] - 2025-11-17
 
 ### Added
@@ -35,14 +66,16 @@ All notable changes to this project will be documented in this file.
 
 ## Deployment Status
 
-✅ **Production Ready**
+✅ **Production Ready & Deployable**
 - All features implemented
 - Documentation complete
 - Tests passing
 - CI/CD configured
 - Docker ready
 - Security reviewed
+- Multiple deployment options available
+- Automated container publishing
 
 ---
 
-Version 1.0.0 - November 17, 2025
+Version 1.1.0 - December 27, 2025

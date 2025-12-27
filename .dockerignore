@@ -1,0 +1,66 @@
+# Git
+.git
+.gitignore
+.github
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Documentation
+*.md
+!README.md
+LICENSE
+
+# Tests
+test_*.py
+*_test.py
+tests/
+.pytest_cache/
+
+# Deployment files
+Procfile
+app.json
+railway.json
+render.yaml
+fly.toml
+deploy.sh
+docker-compose*.yml
+
+# Data and temp
+data/
+tmp/
+*.log
+*.tmp
+
+# Environment
+.env
+.env.*
+!.env.example

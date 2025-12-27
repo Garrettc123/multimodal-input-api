@@ -1,0 +1,29 @@
+{
+  "name": "Multimodal Input API",
+  "description": "A FastAPI-based REST API for handling multiple input modalities including text, images, audio, and video",
+  "repository": "https://github.com/Garrettc123/multimodal-input-api",
+  "keywords": ["fastapi", "api", "multimodal", "python"],
+  "image": "heroku/python",
+  "stack": "heroku-22",
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "env": {
+    "ENVIRONMENT": {
+      "description": "Application environment",
+      "value": "production"
+    },
+    "LOG_LEVEL": {
+      "description": "Logging level",
+      "value": "INFO"
+    }
+  }
+}

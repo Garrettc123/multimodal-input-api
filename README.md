@@ -182,6 +182,41 @@ Errors return appropriate HTTP status codes with details:
 }
 ```
 
+## Deployment
+
+This API can be deployed to various platforms. Quick deployment options:
+
+### Docker
+```bash
+docker build -t multimodal-input-api .
+docker run -p 8000:8000 multimodal-input-api
+```
+
+Or using Docker Compose:
+```bash
+docker-compose up -d
+```
+
+### Deploy to Cloud Platforms
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+The API includes configuration files for easy deployment to:
+- **Heroku** (`Procfile`, `app.json`)
+- **Railway** (`railway.json`)
+- **Render** (`render.yaml`)
+- **Fly.io** (`fly.toml`)
+
+### GitHub Container Registry
+
+Pre-built Docker images are automatically published:
+```bash
+docker pull ghcr.io/garrettc123/multimodal-input-api:latest
+docker run -p 8000:8000 ghcr.io/garrettc123/multimodal-input-api:latest
+```
+
+For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
+
 ## Development
 
 ### Running Tests
